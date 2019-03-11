@@ -1,0 +1,17 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav-content>
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" (click)="closeNav()"
+        >&times;</a
+      >
+      <a routerLink="view-all" routerLinkActive="active" (click)="closeNav()"
+        >Beacons</a
+      >
+      <a routerLink="add" routerLinkActive="active" (click)="closeNav()">Add</a>
+    </div>
+    <span style="font-size:30px;cursor:pointer;margin-left:2%;" (click)="openNav()"
+      >&#9776;
+    </span>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
