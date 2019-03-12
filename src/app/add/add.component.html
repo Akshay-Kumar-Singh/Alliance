@@ -152,13 +152,13 @@
     (ngSubmit)="onSubmit()"
   >
     <div class="beaconSection">
-      <span class="beaconLabel"> <b>Beacon UUID</b> </span>
+      <span class="beaconLabel"> <b>Beacon Unique Id</b> </span>
       <span class="beaconInput">
         <input
           type="text"
           class="form-control"
           formControlName="beacon_id"
-          placeholder="Beacon Id"
+          placeholder="Beacon UUID"
         />
         <div
           class="alert alert-danger"
@@ -173,13 +173,13 @@
       </span>
     </div>
     <div class="axisSection">
-      <span class="axisLabel"> <b>Axis</b> </span>
+      <span class="axisLabel"> <b>Location</b> </span>
       <span class="xaxisInput">
         <input
           type="text"
           class="form-control"
           formControlName="location_x"
-          placeholder="X-axis"
+          placeholder="Longitude"
         />
         <div
           class="alert alert-danger"
@@ -197,7 +197,7 @@
           type="text"
           class="form-control"
           formControlName="location_y"
-          placeholder="Y-axis"
+          placeholder="Latitude"
         />
         <div
           class="alert alert-danger"
