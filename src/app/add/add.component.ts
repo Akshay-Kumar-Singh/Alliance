@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BeaconService } from '../beacon.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add',
@@ -11,7 +12,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class AddComponent implements OnInit {
   constructor(
     private service: BeaconService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private router: Router
   ) {}
   allNodes: any[] = [];
 
@@ -30,7 +32,7 @@ export class AddComponent implements OnInit {
       Validators.pattern(/^[0-9|.]*$/)
     ]),
     description: new FormControl('', [Validators.required]),
-    adjacent_node: new FormControl('', [Validators.maxLength(3)])
+    adjacent_node: new FormControl('')
   });
 
   getAllNode() {
@@ -43,14 +45,19 @@ export class AddComponent implements OnInit {
   }
 
   onSubmit() {
-    let nodes = this.addBeaconForm.value.adjacent_node.toString();
+    const nodes = this.addBeaconForm.value.adjacent_node.toString();
     this.addBeaconForm.value.adjacent_node = nodes;
-    console.log(this.addBeaconForm.value);
+    console.log(this.addBeaconForm.value)
     this.spinner.show();
     this.service.addBeacon(this.addBeaconForm.value).subscribe(res => {
-      this.spinner.hide();
-      alert('Beacon has been successfully added');
-      console.log(res);
+    this.spinner.hide();
+    if(res['responseCode'] === 200){
+    this.router.navigate(['view-all']);
+    alert(res['responseMessage']);
+    } else {
+    alert(res['responseMessage']);
+    }
+    console.log(res);
     });
-  }
+    }
 }

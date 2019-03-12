@@ -28,7 +28,7 @@ export class BeaconsComponent implements OnInit {
 
   deleteBeacon(id) {
     this.service.deleteBeacon(id).subscribe(res => {
-      
+
     })
   }
 
